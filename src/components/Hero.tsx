@@ -282,7 +282,10 @@ export default function Hero(): JSX.Element {
           </Link>
         </div>
       </nav>
-      <p ref={pRef} className="pt-4 text-gray-600 font-bold text-lg">
+      <p
+        ref={pRef}
+        className="pt-4 text-gray-600 font-bold text-lg text-center"
+      >
         Pretty much the right place for goofy trolls like you & I
       </p>
     </div>
