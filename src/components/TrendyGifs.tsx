@@ -7,6 +7,7 @@ import Download from './Download';
 
 /* Do the gsap stagger animation, and some perf enhancements
   - Prefetch or blur img while loading
+  - Pagination, show more/show less
 */
 
 export default function TrendyGifs(): JSX.Element {
