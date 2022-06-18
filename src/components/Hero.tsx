@@ -1,89 +1,31 @@
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Link } from 'react-router-dom';
-gsap.registerPlugin(ScrollTrigger);
-
+import { motion } from 'framer-motion';
 export default function Hero(): JSX.Element {
-  let pRef = useRef(null);
-  let logoRef = useRef(null);
-  let headingRef = useRef(null);
-  let navRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(
-      logoRef.current,
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        ease: 'back.out(1)',
-      }
-    );
-    gsap.fromTo(
-      headingRef.current,
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        delay: 0.4,
-        ease: 'back.out(1)',
-      }
-    );
-    gsap.fromTo(
-      navRef.current,
-      {
-        y: 50,
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.8,
-        ease: 'back.out(1)',
-      }
-    );
-    gsap.fromTo(
-      pRef.current,
-      {
-        y: 20,
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 1.2,
-        ease: 'back.out(1)',
-      }
-    );
-  }, []);
-
   return (
     <div className="flex flex-col items-center justify-evenly bg-gray-400 border-x border-darkBlue-100  h-screen container mx-auto w-full">
       <header className="pt-2 text-center overflow-hidden">
-        <h1
-          ref={logoRef}
+        <motion.h1
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
           className="text-7xl font-style font-bold text-darkBlue-100"
         >
           DeeDs
-        </h1>
-        <h2 ref={headingRef} className="text-4xl font-semibold pt-4 text-white">
+        </motion.h1>
+        <motion.h2
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: 'easeInOut' }}
+          className="text-4xl font-semibold pt-4 text-white"
+        >
           The Hub For The Internet Trolls
-        </h2>
+        </motion.h2>
       </header>
       {/* Maybe I'll have to look up animating SVG with framer */}
-      <nav
-        ref={navRef}
+      <motion.nav
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8, ease: 'easeInOut' }}
         className="w-full overflow-hidden py-8 flex items-center justify-evenly"
       >
         {/* Animate SVG elements on Hover */}
@@ -281,13 +223,15 @@ export default function Hero(): JSX.Element {
             Trending
           </Link>
         </div>
-      </nav>
-      <p
-        ref={pRef}
-        className="pt-4 text-gray-600 font-bold text-lg text-center"
+      </motion.nav>
+      <motion.p
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1, ease: 'easeInOut' }}
+        className="pt-4 text-gray-600 font-bold sm:text-base text-lg text-center"
       >
         Pretty much the right place for goofy trolls like you & I
-      </p>
+      </motion.p>
     </div>
   );
 }

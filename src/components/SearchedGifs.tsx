@@ -1,57 +1,11 @@
 import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import React, { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from './Loading';
 import Download from './Download';
+import { motion } from 'framer-motion';
 
 export default function SearchedGifs(): JSX.Element {
-  let linkRef = useRef(null);
-  let inputRef = useRef(null);
-  let searchHeading = useRef(null);
-  useEffect(() => {
-    gsap.fromTo(
-      linkRef.current,
-      {
-        opacity: 0,
-        x: -40,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.7,
-        ease: 'back.out(1)',
-      }
-    );
-    gsap.fromTo(
-      searchHeading.current,
-      {
-        opacity: 0,
-        x: -100,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        delay: 0.2,
-        ease: 'back.out(1)',
-      }
-    );
-    gsap.fromTo(
-      inputRef.current,
-      {
-        opacity: 0,
-        x: -100,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        delay: 0.4,
-        ease: 'back.out(1)',
-      }
-    );
-  }, []);
   const [searchTerm, setSearchTerm] = useState('');
   async function fetchSearched() {
     const response = await fetch(
@@ -73,34 +27,52 @@ export default function SearchedGifs(): JSX.Element {
   }
   return (
     <div className=" bg-gray-400 border-x border-darkBlue-100 p-4  container mx-auto w-full">
-      <div
-        className="font-style text-white text-xl hover:text-darkBlue-100"
-        ref={linkRef}
+      <motion.div
+        initial={{ y: -40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        className="font-style text-white text-2xl hover:text-darkBlue-100"
       >
         <Link to="/">Home</Link>
-      </div>
+      </motion.div>
       <main className="flex flex-col items-center justify-evenly pt-8">
-        <h1
-          ref={searchHeading}
+        <motion.h1
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: 'easeInOut' }}
           className="text-7xl font-style font-bold text-darkBlue-100"
         >
           Search
-        </h1>
-        <input
+        </motion.h1>
+        <motion.input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyPress={handleKeyPress}
-          ref={inputRef}
           type="text"
           placeholder="Search Gifs"
           className="rounded border-none outline-none p-2 mt-6 bg-light-100 text-darkBlue-100"
+          initial={{ x: -80, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4, ease: 'easeInOut' }}
         />
       </main>
       <section>
         {status === 'loading' && <Loading />}
         {status === 'error' && <div>Error fetching data!</div>}
         {status === 'success' && (
-          <div className="gifs-wrapper">
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.5,
+              staggerChildren: 0.5,
+              delayChildren: 0.5,
+              staggerDirection: -1,
+              ease: 'easeInOut',
+            }}
+            className="gifs-wrapper"
+          >
             {data.data.map((searched: any) => (
               <div
                 className="bg-darkBlue-100 flex flex-col items-center justify-evenly p-4 rounded card max-w-xs"
@@ -117,7 +89,7 @@ export default function SearchedGifs(): JSX.Element {
                 <Download trendy={searched} />
               </div>
             ))}
-          </div>
+          </motion.div>
         )}
       </section>
     </div>

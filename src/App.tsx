@@ -1,14 +1,8 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
 import Hero from './components/Hero';
-
-
-
 export default function App() {
   return (
     <>
       <Hero />
-      {/* SearchedGifs */}
-      {/* TrendingGifs */}
     </>
   );
 }
