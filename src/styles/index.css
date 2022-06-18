@@ -15,6 +15,19 @@ body {
   height: 100vh;
 }
 
+.gifs-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  justify-items: center;
+  grid-gap: 3rem;
+  margin: 4rem 0;
+  padding: 1.5rem;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

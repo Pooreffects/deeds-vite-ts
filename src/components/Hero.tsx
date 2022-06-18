@@ -89,8 +89,8 @@ export default function Hero(): JSX.Element {
         {/* Animate SVG elements on Hover */}
         <div className="p-4 flex flex-col items-center overflow-hidden">
           <svg
-            width="173"
-            height="209"
+            width="230"
+            height="230"
             viewBox="0 0 173 209" // adjust this later
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -201,8 +201,8 @@ export default function Hero(): JSX.Element {
         {/* Animate SVG elements on Hover */}
         <div className="p-4  flex flex-col items-center">
           <svg
-            width="172"
-            height="208"
+            width="230"
+            height="230"
             viewBox="0 0 172 208"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
