@@ -13,6 +13,7 @@ import Download from './Download';
 export default function TrendyGifs(): JSX.Element {
   let trendyLinkRef = useRef(null);
   let trendyHeading = useRef(null);
+
   useEffect(() => {
     gsap.fromTo(
       trendyLinkRef.current,
@@ -53,7 +54,6 @@ export default function TrendyGifs(): JSX.Element {
   }
 
   const { data, status } = useQuery(['trendy'], fetchTrendy);
-  console.log(data, 'from here it goes');
 
   return (
     <div className=" bg-gray-400 border-x border-darkBlue-100 p-4  h-full container mx-auto w-screen">
