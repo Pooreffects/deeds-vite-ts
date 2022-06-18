@@ -193,7 +193,7 @@ export default function Hero(): JSX.Element {
 
           <Link
             to="/search"
-            className="pt-2 font-style pl-10 text-xl text-gray-700 hover:text-light-100 hover:cursor-pointer"
+            className=" font-style pl-8 text-xl text-gray-700 hover:text-light-100 hover:cursor-pointer"
           >
             Search
           </Link>
@@ -276,7 +276,7 @@ export default function Hero(): JSX.Element {
 
           <Link
             to="/trending"
-            className="pt-2 font-style pl-10 text-xl text-gray-700 hover:text-light-100 hover:cursor-pointer"
+            className=" font-style pl-8 text-xl text-gray-700 hover:text-light-100 hover:cursor-pointer"
           >
             Trending
           </Link>
