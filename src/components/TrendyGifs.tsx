@@ -40,21 +40,16 @@ export default function TrendyGifs(): JSX.Element {
         {status === 'loading' && <Loading />}
         {status === 'error' && <div>Error fetching data!</div>}
         {status === 'success' && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 1,
-              delay: 0.5,
-              staggerChildren: 0.5,
-              delayChildren: 0.5,
-              staggerDirection: -1,
-              ease: 'easeInOut',
-            }}
-            className="gifs-wrapper"
-          >
-            {data.data.map((trendy: any) => (
-              <div
+          <div className="gifs-wrapper">
+            {data.data.map((trendy: any, i: any) => (
+              <motion.div
+                initial={{ y: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  delay: i * 0.2,
+                  ease: 'easeInOut',
+                }}
                 className="bg-darkBlue-100 flex flex-col items-center justify-evenly p-4 rounded card max-w-xs"
                 key={trendy.id}
               >
@@ -67,9 +62,9 @@ export default function TrendyGifs(): JSX.Element {
                   {trendy.title}
                 </h4>
                 <Download trendy={trendy} />
-              </div>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         )}
       </section>
     </div>
